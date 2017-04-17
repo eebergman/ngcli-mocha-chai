@@ -42,30 +42,30 @@
     frameworks: ['mocha', 'chai', '@angular/cli'],
     ```
 
-- remove from plugins:
+- remove from `plugins:`
     ```javascript
     require('karma-jasmine'),
     require('karma-jasmine-html-reporter'),
     ```
 
-- add to plugins:
+- add to `plugins:`
     ```javascript
     require('karma-mocha'),
     require('karma-chai'),
     require('karma-mocha-reporter'),
     ```
 
-- add to files:
+- add to `files:`
     ```javascript
     { pattern: 'node_modules/chai/chai.js', instrument: false },
     ```
  
- - add `", 'json'"` to reports: in coverageIstanbulReporter:
+ - add `", 'json'"` to `reports:` in `coverageIstanbulReporter:`
     ```javascript
     reports: [ 'html', 'lcovonly', 'json' ],
     ```
 
- - change: angularCli: reporters: 
+ - change: `angularCli: reporters: `
     ```javascript
     : ['progress', 'kjhtml'],
     ```
@@ -74,6 +74,52 @@
     : ['progress', 'mocha'],
     ```
 
+## e2e/tsconfig.e2e.json
+- remove: from `types:`
+    ```javascript
+    "jasmine",
+    ```
+
+- add: to `types:`
+    ```javascript
+    "mocha",
+    "chai",
+    ```
+
+## e2e/app.e2e-spec.ts
+- add:
+    ```javascript
+    const expect = global['chai'].expect;
+    ```
+
+## src/tsconfig.spec.json
+- remove: from `types:`
+    ```javascript
+    "jasmine",
+    ```
+
+- add: to `types:`
+    ```javascript
+    "mocha",
+    ```
+
+## src/test.ts
+ - change: `imports`
+    ```javascript
+    import 'zone.js/dist/jasmine-patch';
+    ```
+    -->
+     ```javascript
+    import 'zone.js/dist/mocha-patch';
+    ```
+
+## src/app/app.component.spec.ts
+- add:
+    ```javascript
+    import { expect } from 'chai';
+    ```
+
+- change: jasmine syntax to chai so tests will actually run
 
 
 # NgcliMochaChai
