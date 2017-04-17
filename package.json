@@ -28,6 +28,7 @@
     "@angular/cli": "1.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@types/chai": "^3.5.0",
+    "@types/chai-as-promised": "^0.0.30",
     "@types/mocha": "^2.2.40",
     "@types/node": "~6.0.60",
     "chai": "^3.5.0",
