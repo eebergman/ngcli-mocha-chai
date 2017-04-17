@@ -4,10 +4,77 @@
     `yarn remove jasmine-core jasmine-spec-reporter karma-jasmine karma-jasmine-html-reporter @types/jasmine`
 ### - Add Mocha Chai
     `yarn add --dev mocha chai @types/mocha @types/chai karma-chai karma-mocha karma-mocha-reporter @types/chai-as-promised`
-    ''
+   
+### - Upgrade dependencies
     `yarn upgrade`
 
+## protracter.conf.js
+- remove: `const { SpecReporter } = require('jasmine-spec-reporter');`
+
+- change: `framework: 'jasmine'` --> `framework: 'mocha'`
+
+- change: `jasmineNodeOpts` -->
+
+    ```javascript 
+    mochaOpts: {
+     reporter: "spec",
+     slow: 3000,
+     ui: 'bdd',
+     timeout: 30000
+    },
+    ```
+    
+- change: `onPrepare` -->
+
+    ```javascript 
+    onPrepare: function() {
+        var chai = require('chai');
+        var chaiAsPromised = require('chaiAsPromised');
+        chai.use(chaiAsPromised);
+        global.chai = chai;
+    }
+    ```
+
+## karma.conf.js
+- change: `frameworks: []` --> 
+
+    ```javascript
+    frameworks: ['mocha', 'chai', '@angular/cli'],
+    ```
+
+- remove from plugins:
+    ```javascript
+    require('karma-jasmine'),
+    require('karma-jasmine-html-reporter'),
+    ```
+
+- add to plugins:
+    ```javascript
+    require('karma-mocha'),
+    require('karma-chai'),
+    require('karma-mocha-reporter'),
+    ```
+
+- add to files:
+    ```javascript
+    { pattern: 'node_modules/chai/chai.js', instrument: false },
+    ```
  
+ - add `", 'json'"` to reports: in coverageIstanbulReporter:
+    ```javascript
+    reports: [ 'html', 'lcovonly', 'json' ],
+    ```
+
+ - change: angularCli: reporters: 
+    ```javascript
+    : ['progress', 'kjhtml'],
+    ```
+    -->
+     ```javascript
+    : ['progress', 'mocha'],
+    ```
+
+
 
 # NgcliMochaChai
 
