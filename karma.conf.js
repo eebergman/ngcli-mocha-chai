@@ -4,11 +4,12 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', '@angular/cli'],
+    frameworks: ['mocha', 'chai', '@angular/cli'],
     plugins: [
-      require('karma-jasmine'),
+      require('karma-mocha'),
+      require('karma-chai'),
       require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
+      require('karma-mocha-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
@@ -16,6 +17,7 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     files: [
+      { pattern: 'node_modules/chai/chai.js', instrument: false },
       { pattern: './src/test.ts', watched: false }
     ],
     preprocessors: {
@@ -25,7 +27,7 @@ module.exports = function (config) {
       'text/x-typescript': ['ts','tsx']
     },
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
+      reports: [ 'html', 'lcovonly', 'json' ],
       fixWebpackSourcePaths: true
     },
     angularCli: {
@@ -33,7 +35,7 @@ module.exports = function (config) {
     },
     reporters: config.angularCli && config.angularCli.codeCoverage
               ? ['progress', 'coverage-istanbul']
-              : ['progress', 'kjhtml'],
+              : ['progress', 'mocha'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
