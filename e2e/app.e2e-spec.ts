@@ -1,10 +1,11 @@
-import { NgcliMochaChaiPage } from './app.po';
+import { RootPage } from './app.po';
+const expect = global['chai'].expect;
 
 describe('ngcli-mocha-chai App', () => {
-  let page: NgcliMochaChaiPage;
+  let page: RootPage;
 
   beforeEach(() => {
-    page = new NgcliMochaChaiPage();
+    page = new RootPage();
   });
 
   it('should display message saying app works', () => {

@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class NgcliMochaChaiPage {
+export class RootPage {
   navigateTo() {
     return browser.get('/');
   }
