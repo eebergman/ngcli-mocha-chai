@@ -13,13 +13,7 @@ exports.config = {
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
-  // framework: 'jasmine',
   framework: 'mocha',
-  // jasmineNodeOpts: {
-  //   showColors: true,
-  //   defaultTimeoutInterval: 30000,
-  //   print: function() {}
-  // },
   mochaOpts: {
     reporter: "spec",
     slow: 3000,
@@ -31,9 +25,6 @@ exports.config = {
       project: 'e2e/tsconfig.e2e.json'
     });
   },
-  // onPrepare() {
-  //   jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
-  // }
   onPrepare: function() {
     var chai = require('chai');
     var chaiAsPromised = require("chai-as-promised");
