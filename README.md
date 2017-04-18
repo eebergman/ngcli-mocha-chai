@@ -1,7 +1,7 @@
 # Converting Angular CLI generated project to Mocha/Chai
 ## package.json
 ### - Remove Jasmine
-    `yarn remove jasmine-core jasmine-spec-reporter karma-jasmine karma-jasmine-html-reporter @types/jasmine`
+    yarn remove jasmine-core jasmine-spec-reporter karma-jasmine karma-jasmine-html-reporter @types/jasmine
 ### - Add Mocha Chai
     `yarn add --dev mocha chai @types/mocha @types/chai karma-chai karma-mocha karma-mocha-reporter @types/chai-as-promised`
    
