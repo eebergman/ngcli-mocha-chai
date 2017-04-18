@@ -3,10 +3,10 @@
 ### - Remove Jasmine
     yarn remove jasmine-core jasmine-spec-reporter karma-jasmine karma-jasmine-html-reporter @types/jasmine
 ### - Add Mocha Chai
-    `yarn add --dev mocha chai @types/mocha @types/chai karma-chai karma-mocha karma-mocha-reporter @types/chai-as-promised`
+    yarn add --dev mocha chai @types/mocha @types/chai karma-chai karma-mocha karma-mocha-reporter @types/chai-as-promised
    
 ### - Upgrade dependencies
-    `yarn upgrade`
+    yarn upgrade
 
 ## protracter.conf.js
 - remove: `const { SpecReporter } = require('jasmine-spec-reporter');`
@@ -71,7 +71,7 @@
     ```
     -->
      ```javascript
-    : ['progress', 'mocha'],
+    : ['mocha'],
     ```
 
 ## e2e/tsconfig.e2e.json
